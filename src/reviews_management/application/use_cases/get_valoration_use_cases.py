@@ -15,7 +15,7 @@ class GetByUuidValorationUseCase:
                 data=None,
                 message="Valoration not found",
                 status=False,
-                status_code=400
+                status_code=404
             )
         return BaseResponse(
             data=ValorationDTOMapper.to_response_valoration(result),

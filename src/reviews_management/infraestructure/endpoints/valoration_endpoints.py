@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List
 from reviews_management.application.dtos.request.create_valoration_request import CreateValorationRequest
+from reviews_management.application.dtos.request.update_valoration_request import UpdateValorationRequest
 from reviews_management.application.dtos.response.base_response import BaseResponse
 from reviews_management.infraestructure.controllers.create_valoration_controller import CreateValorationController
 from reviews_management.infraestructure.controllers.delete_valoration_controller import DeleteValorationController
@@ -10,7 +11,7 @@ from reviews_management.infraestructure.controllers.update_valoration_controller
 
 router = APIRouter()
 
-from reviews_management.infraestructure.dependencies import (
+from reviews_management.infraestructure.dependencies.tag_dependencies import (
     create_controller, list_controller, update_controller,
     delete_controller, get_by_uuid_controller
 )
@@ -28,7 +29,7 @@ async def get_valoration(uuid: str, controller: GetValorationController = Depend
     return await controller.execute(uuid)
 
 @router.put("/valorations/{uuid}", response_model=BaseResponse)
-async def update_valoration(uuid: str, valoration_request: CreateValorationRequest, controller: UpdateValorationController = Depends(lambda: update_controller)):
+async def update_valoration(uuid: str, valoration_request: UpdateValorationRequest, controller: UpdateValorationController = Depends(lambda: update_controller)):
     return await controller.execute(uuid, valoration_request)
 
 @router.delete("/valorations/{uuid}", response_model=BaseResponse)

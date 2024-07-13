@@ -3,11 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging, sys, os
 import uvicorn
 import logging
-from loguru import logger
-from reviews_management.infraestructure.endpoints import router as valoration_router
-
-logger.remove()
-logger.add("file_{time}.log", rotation="1 week", retention="1 month", level="DEBUG")
+from reviews_management.infraestructure.endpoints.valoration_endpoints import router as valoration_router
 
 app = FastAPI()
 

@@ -5,18 +5,18 @@ from reviews_management.domain.entities.valoration import Valoration as Valorati
 from reviews_management.domain.ports.valoration_interface import ValorationInterface
 from reviews_management.infraestructure.daos.valoration_entity import ValorationEntity
 from beanie import PydanticObjectId
-
 from reviews_management.infraestructure.mappers.valoration_dao_mapper import ValorationMapperDAO
 
 class ValorationMongoRepository(ValorationInterface):
     def __init__(self, mongodb: Database):
         self.mongodb = mongodb
-        self.init_db("valorations")
-        pass
     
-    async def init_db(self, document_name:str):
-        await self.mongodb.init_db(document_name)
+    async def init_db(self, document: ValorationEntity):
+        await self.mongodb.init_db([document])
         
+    async def initialize(self):
+        await self.init_db(ValorationEntity)
+    
     @staticmethod
     async def get_valoration(uuid: str) -> ValorationDomain:
         valoration_entity = await ValorationEntity.find_one(ValorationEntity.uuid == uuid)

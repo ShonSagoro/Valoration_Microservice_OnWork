@@ -1,3 +1,4 @@
+import asyncio
 from database.mongodb import Database
 from reviews_management.application.use_cases.create_valoration_use_cases import CreateValorationUseCase
 from reviews_management.application.use_cases.delete_valoration_use_cases import DeleteValorationUseCase
@@ -8,12 +9,15 @@ from reviews_management.infraestructure.controllers.create_valoration_controller
 from reviews_management.infraestructure.controllers.delete_valoration_controller import DeleteValorationController
 from reviews_management.infraestructure.controllers.get_valoration_controller import GetValorationController
 from reviews_management.infraestructure.controllers.list_valorations_controller import ListValorationController
+from reviews_management.infraestructure.controllers.update_valoration_controller import UpdateValorationController
 from reviews_management.infraestructure.repositories.valorations_mongo_repository import ValorationMongoRepository
 
 
 mongoconnection = Database()
 
 repository = ValorationMongoRepository(mongoconnection)
+
+asyncio.run(repository.initialize())
 
 create_use_case = CreateValorationUseCase(repository)
 list_use_case = ListValorationUseCase(repository)
@@ -23,6 +27,6 @@ get_by_uuid_use_case = GetByUuidValorationUseCase(repository)
 
 create_controller = CreateValorationController(create_use_case)
 list_controller = ListValorationController(list_use_case)
-update_controller = CreateValorationController(update_use_case)
+update_controller = UpdateValorationController(update_use_case)
 delete_controller = DeleteValorationController(delete_use_case)
 get_by_uuid_controller = GetValorationController(get_by_uuid_use_case)

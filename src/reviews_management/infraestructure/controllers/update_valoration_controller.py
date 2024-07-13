@@ -6,7 +6,7 @@ from reviews_management.application.use_cases.create_valoration_use_cases import
 from reviews_management.application.use_cases.update_valoration_use_cases import UpdateValorationUseCase
 
 
-class CreateValorationController:
+class UpdateValorationController:
     def __init__(self, useCases: UpdateValorationUseCase):
         self.useCases = useCases
 
