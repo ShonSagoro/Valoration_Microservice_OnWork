@@ -8,8 +8,8 @@ class DeleteValorationUseCase:
     def __init__(self, repository: ValorationInterface):
         self.repository = repository
 
-    def execute(self, uuid:str) -> BaseResponse:
-        result = self.repository.delete_valoration(uuid)
+    async def execute(self, uuid:str) -> BaseResponse:
+        result = await self.repository.delete_valoration(uuid)
         if result is False:
             return BaseResponse(
                 data=None,

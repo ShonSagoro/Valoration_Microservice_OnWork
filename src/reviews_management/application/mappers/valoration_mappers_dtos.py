@@ -18,8 +18,6 @@ class ValorationDTOMapper:
             general_review=GeneralReview.POSITIVE,
             user_uuid=valoration_create.user_uuid,
             provider_uuid=valoration_create.provider_uuid,
-            createdAt=datetime.datetime.now(datetime.UTC),  
-            updatedAt=datetime.datetime.now(datetime.UTC)   
         )
         return valoration
 
@@ -30,11 +28,9 @@ class ValorationDTOMapper:
                 rating=valoration_update.rating,
                 comment=valoration_update.comment
             ),
-            general_review=None,  
-            user_uuid=None, 
-            provider_uuid=None, 
-            createdAt=None, 
-            updatedAt=datetime.datetime.now(datetime.UTC)
+            general_review=GeneralReview.POSITIVE,
+            user_uuid="", 
+            provider_uuid="", 
         )
         return valoration
 
@@ -49,4 +45,4 @@ class ValorationDTOMapper:
             provider_uuid=valoration.provider_uuid,
             createdAt=valoration.createdAt,
             updatedAt=valoration.updatedAt
-        )
+        ).to_dict()

@@ -9,7 +9,7 @@ class UpdateValorationUseCase:
     def __init__(self, repository: ValorationInterface):
         self.repository = repository
 
-    def execute(self, valoration: UpdateValorationRequest) -> BaseResponse:
+    async def execute(self, uuid:str, valoration: UpdateValorationRequest) -> BaseResponse:
         valorationDomain = ValorationDTOMapper.to_domain_valoration_update(valoration)
         if valorationDomain is None:
             return BaseResponse(
@@ -18,7 +18,7 @@ class UpdateValorationUseCase:
                 status=False,
                 status_code=400
             )
-        result = self.repository.update_valoration(valorationDomain)
+        result = await self.repository.update_valoration(uuid, valorationDomain)
         if result is None:
             return BaseResponse(
                 data=None,

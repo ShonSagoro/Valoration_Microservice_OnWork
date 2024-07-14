@@ -7,6 +7,7 @@ from reviews_management.infraestructure.daos.valoration_entity import Valoration
 from beanie import PydanticObjectId
 from reviews_management.infraestructure.mappers.valoration_dao_mapper import ValorationMapperDAO
 
+logger = logging.getLogger(__name__)
 class ValorationMongoRepository(ValorationInterface):
     def __init__(self, mongodb: Database):
         self.mongodb = mongodb
@@ -40,6 +41,9 @@ class ValorationMongoRepository(ValorationInterface):
             return None
         updated_entity = ValorationMapperDAO.from_domain(valoration)
         updated_entity.uuid = uuid
+        updated_entity.user_uuid = valoration_entity.user_uuid
+        updated_entity.provider_uuid = valoration_entity.provider_uuid
+        updated_entity.general_review = valoration_entity.general_review
         await valoration_entity.update({"$set": updated_entity.dict(exclude_unset=True)})
         return ValorationMapperDAO.to_domain(updated_entity)
 

@@ -2,9 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging, sys, os
 import uvicorn
-import logging
 from reviews_management.infraestructure.endpoints.valoration_endpoints import router as valoration_router
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
 app.add_middleware(
@@ -17,12 +18,11 @@ app.add_middleware(
 
 app.include_router(valoration_router, prefix="")
 
-
 def main():
     logging.info(f'API is running')
     try:
-        logging.info(f'API is running in http://localhost:3002s')
-        uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+        logging.info(f'API is running in http://localhost:3002')
+        uvicorn.run("main:app", host="0.0.0.0", port=3002, reload=True)
     except Exception as e:
         logging.error(f'Error while running API: {str(e)}')
     except KeyboardInterrupt:

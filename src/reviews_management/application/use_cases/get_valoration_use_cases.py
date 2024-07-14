@@ -8,8 +8,8 @@ class GetByUuidValorationUseCase:
     def __init__(self, repository: ValorationInterface):
         self.repository = repository
 
-    def execute(self, uuid:str) -> BaseResponse:
-        result = self.repository.get_valoration(uuid)
+    async def execute(self, uuid:str) -> BaseResponse:
+        result = await self.repository.get_valoration(uuid)
         if result is None:
             return BaseResponse(
                 data=None,
