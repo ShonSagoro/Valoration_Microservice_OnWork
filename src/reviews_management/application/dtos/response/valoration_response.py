@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-import datetime
-
+from datetime import datetime
 class ValorationResponse(BaseModel):
     uuid: str
     rating: int
@@ -8,8 +7,8 @@ class ValorationResponse(BaseModel):
     user_uuid: str
     general_review: str
     provider_uuid: str
-    createdAt: datetime.datetime
-    updatedAt: datetime.datetime
+    createdAt: datetime
+    updatedAt: datetime
 
     def to_dict(self):
         return {

@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from reviews_management.domain.entities.valoration import Valoration
 
 class ValorationInterface(ABC):

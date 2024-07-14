@@ -1,9 +1,7 @@
 from beanie import Document
-from bson import ObjectId
-from pydantic import BaseModel, Field
+from pydantic import Field
 from enum import Enum
 from datetime import datetime, timezone
-import uuid
 
 class ValorationEntity(Document):
     uuid: str  
