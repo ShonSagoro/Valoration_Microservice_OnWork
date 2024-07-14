@@ -21,5 +21,5 @@ class DeleteValorationUseCase:
             data=True,
             message="Valoration has been deleted successfully",
             status=True,
-            status_code=201
+            status_code=200
         )
