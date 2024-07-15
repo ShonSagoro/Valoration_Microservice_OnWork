@@ -1,6 +1,5 @@
-from reviews_management.application.dtos.request.create_valoration_request import CreateValorationRequest
 from reviews_management.application.dtos.response.base_response import BaseResponse
-from reviews_management.application.mappers.valoration_mappers_dtos import ValorationDTOMapper
+from reviews_management.application.mappers.valoration_mappers_dtos import ValorationMapperDTO
 from reviews_management.domain.ports.valoration_interface import ValorationInterface
 
 
@@ -18,7 +17,7 @@ class GetByUuidValorationUseCase:
                 status_code=404
             )
         return BaseResponse(
-            data=ValorationDTOMapper.to_response_valoration(result),
+            data=ValorationMapperDTO.to_response_valoration(result),
             message="Valoration has been found successfully",
             status=True,
             status_code=302

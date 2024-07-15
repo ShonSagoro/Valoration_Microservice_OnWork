@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 class ValorationEntity(Document):
     uuid: str  
-    rating: int
+    raiting: int
     comment: str
     general_review: str
     user_uuid: str

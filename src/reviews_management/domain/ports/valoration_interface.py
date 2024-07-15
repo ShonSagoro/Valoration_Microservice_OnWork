@@ -3,7 +3,7 @@ from reviews_management.domain.entities.valoration import Valoration
 
 class ValorationInterface(ABC):
     @abstractmethod
-    def get_valoration(self, uuid: str) -> list:
+    def get_valoration(self, uuid: str) -> dict:
         pass
     
     @abstractmethod

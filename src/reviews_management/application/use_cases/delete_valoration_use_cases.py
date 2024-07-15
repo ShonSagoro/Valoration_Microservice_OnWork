@@ -1,6 +1,4 @@
-from reviews_management.application.dtos.request.create_valoration_request import CreateValorationRequest
 from reviews_management.application.dtos.response.base_response import BaseResponse
-from reviews_management.application.mappers.valoration_mappers_dtos import ValorationDTOMapper
 from reviews_management.domain.ports.valoration_interface import ValorationInterface
 
 

@@ -1,23 +1,24 @@
-from pydantic import BaseModel
 from datetime import datetime
-class ValorationResponse(BaseModel):
+from pydantic import BaseModel
+
+
+class CommentResponse(BaseModel):
     uuid: str
-    raiting: int
     comment: str
+    raiting: int
     user_uuid: str
-    general_review: str
-    provider_uuid: str
+    publication_uuid: str
     createdAt: datetime
     updatedAt: datetime
-
+    
     def to_dict(self):
         return {
             "uuid": self.uuid,
-            "raiting": self.raiting,
             "comment": self.comment,
-            "general_review": self.general_review,
+            "raiting": self.raiting,
             "user_uuid": self.user_uuid,
-            "provider_uuid": self.provider_uuid,
+            "publication_uuid": self.publication_uuid,
+            "user_uuid": self.user_uuid,
             "createdAt": self.createdAt.isoformat(),
             "updatedAt": self.updatedAt.isoformat()
         }

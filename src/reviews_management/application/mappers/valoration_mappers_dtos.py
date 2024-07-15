@@ -5,11 +5,11 @@ from reviews_management.domain.entities.comment import CommentRainting
 from reviews_management.domain.entities.enum.general_review import GeneralReview
 from reviews_management.domain.entities.valoration import Valoration
 
-class ValorationDTOMapper:
+class ValorationMapperDTO:
     @staticmethod
     def to_domain_valoration_create(valoration_create: CreateValorationRequest) -> Valoration:
         comment = CommentRainting(
-            rating=valoration_create.rating,
+            raiting=valoration_create.raiting,
             comment=valoration_create.comment
         )
         valoration = Valoration(
@@ -24,7 +24,7 @@ class ValorationDTOMapper:
     def to_domain_valoration_update(valoration_update: UpdateValorationRequest) -> Valoration:
         valoration = Valoration(
             comment=CommentRainting(
-                rating=valoration_update.rating,
+                raiting=valoration_update.raiting,
                 comment=valoration_update.comment
             ),
             general_review=GeneralReview.POSITIVE,
@@ -37,7 +37,7 @@ class ValorationDTOMapper:
     def to_response_valoration(valoration: Valoration) -> ValorationResponse:
         return ValorationResponse(
             uuid=str(valoration.uuid),
-            rating=valoration.comment.rating,
+            raiting=valoration.comment.raiting,
             comment=valoration.comment.comment,
             user_uuid=valoration.user_uuid,
             general_review=valoration.general_review.value,

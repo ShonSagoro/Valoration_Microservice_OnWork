@@ -5,5 +5,5 @@ import uuid
 
 @dataclass
 class CommentRainting:
-    rating: int
+    raiting: int
     comment: str
