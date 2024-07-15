@@ -22,7 +22,7 @@ class PublicationResponse(BaseModel):
             "description": self.description,
             "user_uuid": self.user_uuid,
             "content": self.content,
-            "comments": self.comments.to_dict(),
+            "comments": [comment.to_dict() for comment in self.comments],
             "createdAt": self.createdAt.isoformat(),
             "updatedAt": self.updatedAt.isoformat()
         }

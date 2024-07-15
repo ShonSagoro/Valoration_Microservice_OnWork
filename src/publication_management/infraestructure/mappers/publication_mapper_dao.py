@@ -1,14 +1,13 @@
-from publication_management.infraestructure.daos.publication_entity import PublicationEntity, publicationEntity
-from reviews_management.domain.entities.enum.general_review import GeneralReview
+from publication_management.infraestructure.daos.publication_entity import PublicationEntity
 from publication_management.domain.entities.publication import Publication as PublicationDomain
 
 class PublicationMapperDAO:
     @staticmethod
     def from_domain(publication: PublicationDomain) -> PublicationEntity:
-        return publicationEntity(
+        return PublicationEntity(
             uuid=str(publication.uuid),
-            title=publication.publication.title,
-            description=publication.publication.description,
+            title=str(publication.title),
+            description=publication.description,
             user_uuid=publication.user_uuid,
             content=publication.content,
             createdAt=publication.createdAt,  

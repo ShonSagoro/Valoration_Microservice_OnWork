@@ -11,6 +11,7 @@ class CreateCommentController:
 
     async def execute(self, request: CreateCommentRequest):
         try:
+            logging.info(request)
             base_response = await self.use_cases.execute(request)
             return base_response.apply()
         except Exception as e:

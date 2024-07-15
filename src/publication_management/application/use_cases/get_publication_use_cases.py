@@ -16,7 +16,7 @@ class GetByUuidPublicationUseCase:
                 status_code=404
             )
         return BaseResponse(
-            data=PublicationMapperDTO.to_response_publication(result),
+            data=PublicationMapperDTO.to_response(result),
             message="publication has been found successfully",
             status=True,
             status_code=302

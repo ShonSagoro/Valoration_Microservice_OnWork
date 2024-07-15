@@ -8,7 +8,7 @@ class ValorationMapperDAO:
     def from_domain(valoration: ValorationDomain) -> ValorationEntity:
         return ValorationEntity(
             uuid=str(valoration.uuid),
-            raiting=valoration.comment.raiting,
+            rating=valoration.comment.rating,
             comment=valoration.comment.comment,
             general_review=valoration.general_review.value,
             user_uuid=valoration.user_uuid,
@@ -20,7 +20,7 @@ class ValorationMapperDAO:
     @staticmethod
     def to_update(entity: ValorationEntity, update: ValorationEntity) -> ValorationEntity:
         entity.comment = update.comment
-        entity.raiting = update.raiting
+        entity.rating = update.rating
         return entity
     
 
@@ -28,7 +28,7 @@ class ValorationMapperDAO:
     def to_domain(valoration_dao: ValorationEntity) -> ValorationDomain:
         valoration_domain= ValorationDomain(
             comment=CommentRainting(
-                raiting=valoration_dao.raiting,
+                rating=valoration_dao.rating,
                 comment=valoration_dao.comment
             ),
             general_review=GeneralReview(valoration_dao.general_review),

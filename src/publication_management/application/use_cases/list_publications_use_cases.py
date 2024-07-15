@@ -11,7 +11,7 @@ class ListPublicationUseCase:
 
     async def execute(self) -> BaseResponse:
         publications = await self.repository.list_publication()
-        responses = [PublicationMapperDTO.to_response_publication(publication) for publication in publications]
+        responses = [PublicationMapperDTO.to_response(publication) for publication in publications]
         return BaseResponse(
             data=responses,
             message="publications listed successfully",

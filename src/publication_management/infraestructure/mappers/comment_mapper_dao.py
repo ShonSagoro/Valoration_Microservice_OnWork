@@ -7,8 +7,8 @@ class CommentMapperDAO:
     def from_domain(comment: CommentDomain) -> CommentEntity:
         return CommentEntity(
             uuid=str(comment.uuid),
-            raiting=comment.comment.raiting,
-            comment=comment.comment.comment,
+            rating=comment.rating,
+            comment=comment.comment,
             user_uuid=comment.user_uuid,
             publication_uuid=comment.publication_uuid,
             createdAt=comment.createdAt,  
@@ -18,13 +18,13 @@ class CommentMapperDAO:
     @staticmethod
     def to_update(entity: CommentEntity, update: CommentEntity) -> CommentEntity:
         entity.comment = update.comment
-        entity.raiting = update.raiting
+        entity.rating = update.rating
         return entity
     
     @staticmethod
     def to_domain(comment_dao: CommentEntity) -> CommentDomain:
         comment_domain= CommentDomain(
-            raiting=comment_dao.raiting,
+            rating=comment_dao.rating,
             comment=comment_dao.comment,
             user_uuid=comment_dao.user_uuid,
             publication_uuid=comment_dao.publication_uuid,

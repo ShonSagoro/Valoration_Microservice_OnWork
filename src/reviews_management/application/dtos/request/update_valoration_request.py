@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 class UpdateValorationRequest(BaseModel):
-    raiting: int
+    rating: int
     comment: str

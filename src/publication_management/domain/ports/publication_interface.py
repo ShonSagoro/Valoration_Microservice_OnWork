@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-from publication_management.domain.entities import Publication
-from publication_management.domain.entities.publication import publicationUser
+from publication_management.domain.entities.publication import Publication
 
 
 class PublicationInterface(ABC):

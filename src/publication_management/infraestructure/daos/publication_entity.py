@@ -6,10 +6,10 @@ from datetime import datetime, timezone
 
 class PublicationEntity(Document):
     uuid: str  
-    title: int
+    title: str
     description: str
     user_uuid: str
-    content: List[str] = []
+    content: List[str] = Field(default_factory=list)
     createdAt: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updatedAt: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))    
 

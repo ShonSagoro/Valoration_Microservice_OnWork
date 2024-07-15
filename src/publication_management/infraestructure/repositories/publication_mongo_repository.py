@@ -3,7 +3,7 @@ from typing import List
 from database.mongodb import Database
 from publication_management.domain.ports.publication_interface import PublicationInterface
 from publication_management.infraestructure.daos.publication_entity import PublicationEntity
-from publication_management.domain.entities import Publication as PublicationDomain
+from publication_management.domain.entities.publication import Publication as PublicationDomain
 from publication_management.infraestructure.mappers.publication_mapper_dao import PublicationMapperDAO
 
 logger = logging.getLogger(__name__)

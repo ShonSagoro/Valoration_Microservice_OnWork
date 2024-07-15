@@ -12,7 +12,7 @@ class CreateCommentUseCase:
         self.repository = repository
 
     async def execute(self, Comment: CreateCommentRequest) -> BaseResponse:
-        commentDomain = CommentMapperDTO.to_domain_comment_create(Comment)
+        commentDomain = CommentMapperDTO.to_domain_create(Comment)
         if commentDomain is None:
             return BaseResponse(
                 data=None,
@@ -30,7 +30,7 @@ class CreateCommentUseCase:
                 status_code=400
             )
         return BaseResponse(
-            data=CommentMapperDTO.to_response_comment(result),
+            data=CommentMapperDTO.to_response(result),
             message="Comment created successfully",
             status=True,
             status_code=201

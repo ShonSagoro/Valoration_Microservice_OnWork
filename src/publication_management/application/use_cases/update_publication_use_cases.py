@@ -9,7 +9,7 @@ class UpdatePublicationUseCase:
         self.repository = repository
 
     async def execute(self, uuid:str, publication: UpdatePublicationRequest) -> BaseResponse:
-        publicationDomain = PublicationMapperDTO.to_domain_publication_update(publication)
+        publicationDomain = PublicationMapperDTO.to_domain_update(publication)
         if publicationDomain is None:
             return BaseResponse(
                 data=None,
@@ -26,7 +26,7 @@ class UpdatePublicationUseCase:
                 status_code=400
             )
         return BaseResponse(
-            data=PublicationMapperDTO.to_response_publication(result),
+            data=PublicationMapperDTO.to_response(result),
             message="publication updated successfully",
             status=True,
             status_code=200

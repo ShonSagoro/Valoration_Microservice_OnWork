@@ -11,7 +11,7 @@ class CreatePublicationUseCase:
         self.repository = repository
 
     async def execute(self, publication: CreatePublicationRequest) -> BaseResponse:
-        publicationDomain = PublicationMapperDTO.to_domain_publication_create(publication)
+        publicationDomain = PublicationMapperDTO.to_domain_create(publication)
         if publicationDomain is None:
             return BaseResponse(
                 data=None,
@@ -29,7 +29,7 @@ class CreatePublicationUseCase:
                 status_code=400
             )
         return BaseResponse(
-            data=PublicationMapperDTO.to_response_publication(result),
+            data=PublicationMapperDTO.to_response(result),
             message="publication created successfully",
             status=True,
             status_code=201

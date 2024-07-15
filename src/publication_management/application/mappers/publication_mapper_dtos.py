@@ -1,7 +1,7 @@
 from publication_management.application.dtos.request.create_publication_request import CreatePublicationRequest
 from publication_management.application.dtos.request.update_publication_request import UpdatePublicationRequest
 from publication_management.application.dtos.response.publication_response import PublicationResponse
-from publication_management.domain.entities import Publication as PublicationDomain
+from publication_management.domain.entities.publication import Publication as PublicationDomain
 
 
 class PublicationMapperDTO:
@@ -23,14 +23,14 @@ class PublicationMapperDTO:
         
 
     @staticmethod
-    def to_response(comment: PublicationDomain) -> PublicationResponse:
+    def to_response(entity: PublicationDomain) -> PublicationResponse:
         return PublicationResponse(
-            uuid= comment.uuid,
-            title= comment.comment,
-            description= comment.raiting,
-            user_uuid= comment.user_uuid,
-            content= comment.content,
-            comments= comment.comments,
-            createdAt= comment.createdAt,
-            updatedAt= comment.updatedAt
-        )
+            uuid= entity.uuid,
+            title= entity.title,
+            description= entity.description,
+            user_uuid= entity.user_uuid,
+            content= entity.content,
+            comments= entity.comments,
+            createdAt= entity.createdAt,
+            updatedAt= entity.updatedAt
+        ).to_dict()

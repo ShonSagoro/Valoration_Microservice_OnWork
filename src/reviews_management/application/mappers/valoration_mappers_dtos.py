@@ -9,7 +9,7 @@ class ValorationMapperDTO:
     @staticmethod
     def to_domain_valoration_create(valoration_create: CreateValorationRequest) -> Valoration:
         comment = CommentRainting(
-            raiting=valoration_create.raiting,
+            rating=valoration_create.rating,
             comment=valoration_create.comment
         )
         valoration = Valoration(
@@ -24,7 +24,7 @@ class ValorationMapperDTO:
     def to_domain_valoration_update(valoration_update: UpdateValorationRequest) -> Valoration:
         valoration = Valoration(
             comment=CommentRainting(
-                raiting=valoration_update.raiting,
+                rating=valoration_update.rating,
                 comment=valoration_update.comment
             ),
             general_review=GeneralReview.POSITIVE,
@@ -37,7 +37,7 @@ class ValorationMapperDTO:
     def to_response_valoration(valoration: Valoration) -> ValorationResponse:
         return ValorationResponse(
             uuid=str(valoration.uuid),
-            raiting=valoration.comment.raiting,
+            rating=valoration.comment.rating,
             comment=valoration.comment.comment,
             user_uuid=valoration.user_uuid,
             general_review=valoration.general_review.value,

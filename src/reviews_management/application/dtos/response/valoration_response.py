@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 class ValorationResponse(BaseModel):
     uuid: str
-    raiting: int
+    rating: int
     comment: str
     user_uuid: str
     general_review: str
@@ -13,7 +13,7 @@ class ValorationResponse(BaseModel):
     def to_dict(self):
         return {
             "uuid": self.uuid,
-            "raiting": self.raiting,
+            "rating": self.rating,
             "comment": self.comment,
             "general_review": self.general_review,
             "user_uuid": self.user_uuid,

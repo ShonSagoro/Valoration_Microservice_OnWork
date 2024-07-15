@@ -3,8 +3,8 @@ from typing import List
 from middleware.jwt_middleware import verify_token
 from publication_management.application.dtos.request.create_comment_request import CreateCommentRequest
 from publication_management.application.dtos.request.update_comment_request import UpdateCommentRequest
+from publication_management.infraestructure.dependencies.comment_dependencies import get_create_controller, get_delete_controller, get_get_by_uuid_controller, get_list_controller, get_update_controller
 from reviews_management.application.dtos.response.base_response import BaseResponse
-from reviews_management.infraestructure.dependencies.valorations_dependencies import get_create_controller, get_delete_controller, get_get_by_uuid_controller, get_list_controller, get_update_controller
 
 
 

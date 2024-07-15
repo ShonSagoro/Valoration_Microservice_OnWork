@@ -9,7 +9,7 @@ class UpdateCommentUseCase:
         self.repository = repository
 
     async def execute(self, uuid:str, comment: UpdateCommentRequest) -> BaseResponse:
-        commentDomain = CommentMapperDTO.to_domain_comment_update(comment)
+        commentDomain = CommentMapperDTO.to_domain_update(comment)
         if commentDomain is None:
             return BaseResponse(
                 data=None,
@@ -26,7 +26,7 @@ class UpdateCommentUseCase:
                 status_code=400
             )
         return BaseResponse(
-            data=CommentMapperDTO.to_response_comment(result),
+            data=CommentMapperDTO.to_response(result),
             message="comment updated successfully",
             status=True,
             status_code=200

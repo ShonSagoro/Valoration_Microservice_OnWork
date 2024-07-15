@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class CommentResponse(BaseModel):
     uuid: str
     comment: str
-    raiting: int
+    rating: int
     user_uuid: str
     publication_uuid: str
     createdAt: datetime
@@ -15,7 +15,7 @@ class CommentResponse(BaseModel):
         return {
             "uuid": self.uuid,
             "comment": self.comment,
-            "raiting": self.raiting,
+            "rating": self.rating,
             "user_uuid": self.user_uuid,
             "publication_uuid": self.publication_uuid,
             "user_uuid": self.user_uuid,

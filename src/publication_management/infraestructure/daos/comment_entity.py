@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 class CommentEntity(Document):
     uuid: str  
-    raiting: int
+    rating: int
     comment: str
     user_uuid: str
     publication_uuid: str

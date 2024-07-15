@@ -11,7 +11,7 @@ class ListCommentUseCase:
 
     async def execute(self) -> BaseResponse:
         comments = await self.repository.list_comment()
-        responses = [CommentMapperDTO.to_response_comment(comment) for comment in comments]
+        responses = [CommentMapperDTO.to_response(comment) for comment in comments]
         return BaseResponse(
             data=responses,
             message="comments listed successfully",
