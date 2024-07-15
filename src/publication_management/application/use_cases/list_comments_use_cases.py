@@ -1,5 +1,5 @@
 import logging
-from publication_management.application.mappers.comment_mappers_dtos import CommentMapperDTO
+from publication_management.application.mappers.comment_mapper_dtos import CommentMapperDTO
 from publication_management.domain.ports.comment_interface import CommentInterface
 from reviews_management.application.dtos.response.base_response import BaseResponse
 

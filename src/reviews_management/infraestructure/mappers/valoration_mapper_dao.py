@@ -18,6 +18,13 @@ class ValorationMapperDAO:
         )
 
     @staticmethod
+    def to_update(entity: ValorationEntity, update: ValorationEntity) -> ValorationEntity:
+        entity.comment = update.comment
+        entity.raiting = update.raiting
+        return entity
+    
+
+    @staticmethod
     def to_domain(valoration_dao: ValorationEntity) -> ValorationDomain:
         valoration_domain= ValorationDomain(
             comment=CommentRainting(

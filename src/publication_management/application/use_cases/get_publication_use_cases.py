@@ -1,4 +1,4 @@
-from publication_management.application.mappers.publication_mappers_dtos import PublicationMapperDTO
+from publication_management.application.mappers.publication_mapper_dtos import PublicationMapperDTO
 from publication_management.domain.ports.publication_interface import PublicationInterface
 from reviews_management.application.dtos.response.base_response import BaseResponse
 

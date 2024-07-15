@@ -4,8 +4,7 @@ from database.mongodb import Database
 from reviews_management.domain.entities.valoration import Valoration as ValorationDomain
 from reviews_management.domain.ports.valoration_interface import ValorationInterface
 from reviews_management.infraestructure.daos.valoration_entity import ValorationEntity
-from beanie import PydanticObjectId
-from reviews_management.infraestructure.mappers.valoration_dao_mapper import ValorationMapperDAO
+from reviews_management.infraestructure.mappers.valoration_mapper_dao import ValorationMapperDAO
 
 logger = logging.getLogger(__name__)
 class ValorationMongoRepository(ValorationInterface):
@@ -40,10 +39,7 @@ class ValorationMongoRepository(ValorationInterface):
             logging.error(f"Valoration with UUID {uuid} not found.")
             return None
         updated_entity = ValorationMapperDAO.from_domain(valoration)
-        updated_entity.uuid = uuid
-        updated_entity.user_uuid = valoration_entity.user_uuid
-        updated_entity.provider_uuid = valoration_entity.provider_uuid
-        updated_entity.general_review = valoration_entity.general_review
+        updated_entity = ValorationMapperDAO.to_update(valoration_entity, updated_entity)
         await valoration_entity.update({"$set": updated_entity.dict(exclude_unset=True)})
         return ValorationMapperDAO.to_domain(updated_entity)
 

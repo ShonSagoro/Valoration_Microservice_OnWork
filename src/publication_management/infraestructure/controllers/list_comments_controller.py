@@ -1,18 +1,17 @@
+
 import logging
-from reviews_management.application.dtos.request.update_valoration_request import UpdateValorationRequest
+from publication_management.application.use_cases.list_comments_use_cases import ListCommentUseCase
 from reviews_management.application.dtos.response.base_response import BaseResponse
-from reviews_management.application.use_cases.update_valoration_use_cases import UpdateValorationUseCase
 
 logger = logging.getLogger(__name__)
 
-
-class UpdateValorationController:
-    def __init__(self, useCases: UpdateValorationUseCase):
+class ListCommentController:
+    def __init__(self, useCases: ListCommentUseCase):
         self.use_cases = useCases
 
-    async def execute(self, uuid:str, valoration_request: UpdateValorationRequest):
+    async def execute(self):
         try:
-            base_response = await self.use_cases.execute(uuid, valoration_request)
+            base_response = await self.use_cases.execute()
             return base_response.apply()
         except Exception as e:
             logger.error(e)
