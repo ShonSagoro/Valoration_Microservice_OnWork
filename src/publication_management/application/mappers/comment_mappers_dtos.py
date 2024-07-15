@@ -3,7 +3,6 @@ from publication_management.application.dtos.request.update_comment_request impo
 from publication_management.application.dtos.response.comment_response import CommentResponse
 from publication_management.domain.entities.comment import CommentUser
 
-
 class CommentMapperDTO:
     @staticmethod
     def to_domain_create(request: CreateCommentRequest) -> CommentUser:
