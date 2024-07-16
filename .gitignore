@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+
+docker-compose-mongo-rabbit.yml
+
 # Distribution / packaging
 .Python
 build/
