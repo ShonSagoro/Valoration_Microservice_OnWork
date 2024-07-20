@@ -1,3 +1,4 @@
+from publication_management.application.utils.analisys_comment import analysis_comment
 from reviews_management.application.dtos.request.update_valoration_request import UpdateValorationRequest
 from reviews_management.application.dtos.response.base_response import BaseResponse
 from reviews_management.application.mappers.valoration_mappers_dtos import ValorationMapperDTO
@@ -10,6 +11,8 @@ class UpdateValorationUseCase:
 
     async def execute(self, uuid:str, valoration: UpdateValorationRequest) -> BaseResponse:
         valorationDomain = ValorationMapperDTO.to_domain_valoration_update(valoration)
+        commentStatus, commentStar = analysis_comment(valorationDomain.comment.comment)
+        valorationDomain = ValorationMapperDTO.update_comment(valorationDomain, commentStatus, commentStar)
         if valorationDomain is None:
             return BaseResponse(
                 data=None,

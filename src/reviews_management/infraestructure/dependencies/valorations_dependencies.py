@@ -1,7 +1,13 @@
 from fastapi import Depends
+from reviews_management.application.use_cases.get_time_serie_use_cases import GetTimeSerieUseCases
+from reviews_management.application.use_cases.get_valorations_by_provider_uuid_use_cases import GetByProviderUuidValorationUseCase
+from reviews_management.application.use_cases.get_valorations_by_user_uuid_use_cases import GetByUserUuidValorationUseCase
 from reviews_management.infraestructure.controllers.create_valoration_controller import CreateValorationController
 from reviews_management.infraestructure.controllers.delete_valoration_controller import DeleteValorationController
+from reviews_management.infraestructure.controllers.get_time_serie_controller import GetTimeSerieController
 from reviews_management.infraestructure.controllers.get_valoration_controller import GetValorationController
+from reviews_management.infraestructure.controllers.get_valorations_by_provider_uuid_controller import GetByProviderUuidValorationController
+from reviews_management.infraestructure.controllers.get_valorations_by_user_uuid_controller import GetByUserUuidValorationController
 from reviews_management.infraestructure.controllers.list_valorations_controller import ListValorationController
 from reviews_management.infraestructure.controllers.update_valoration_controller import UpdateValorationController
 from reviews_management.application.use_cases.create_valoration_use_cases import CreateValorationUseCase
@@ -35,6 +41,18 @@ async def get_get_by_uuid_use_case() -> GetByUuidValorationUseCase:
     await repository.initialize()
     return GetByUuidValorationUseCase(repository)
 
+async def get_get_by_uuid_user_use_case() -> GetByUserUuidValorationUseCase:
+    await repository.initialize()
+    return GetByUserUuidValorationUseCase(repository)
+
+async def get_get_by_uuid_provider_use_case() -> GetByProviderUuidValorationUseCase:
+    await repository.initialize()
+    return GetByProviderUuidValorationUseCase(repository)
+
+async def get_get_time_serie_use_cases() -> GetTimeSerieUseCases:
+    await repository.initialize()
+    return GetTimeSerieUseCases(repository)
+
 async def get_create_controller(create_use_case: CreateValorationUseCase = Depends(get_create_use_case)) -> CreateValorationController:
     return CreateValorationController(create_use_case)
 
@@ -49,3 +67,13 @@ async def get_delete_controller(delete_use_case: DeleteValorationUseCase = Depen
 
 async def get_get_by_uuid_controller(get_by_uuid_use_case: GetByUuidValorationUseCase = Depends(get_get_by_uuid_use_case)) -> GetValorationController:
     return GetValorationController(get_by_uuid_use_case)
+
+async def get_get_by_uuid_user_controller(get_by_uuid_user_use_case: GetByUserUuidValorationUseCase = Depends(get_get_by_uuid_user_use_case)) -> GetByUserUuidValorationController:
+    return GetByUserUuidValorationController(get_by_uuid_user_use_case)
+
+async def get_get_by_uuid_provider_controller(get_by_uuid_provider_use_case: GetByProviderUuidValorationUseCase = Depends(get_get_by_uuid_provider_use_case)) -> GetByProviderUuidValorationController:
+    return GetByProviderUuidValorationController(get_by_uuid_provider_use_case)
+
+async def get_get_time_serie_controller(get_time_serie_use_cases: GetTimeSerieUseCases = Depends(get_get_time_serie_use_cases)) -> GetTimeSerieController:
+    return GetTimeSerieController(get_time_serie_use_cases)
+

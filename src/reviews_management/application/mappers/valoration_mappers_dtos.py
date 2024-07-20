@@ -19,6 +19,12 @@ class ValorationMapperDTO:
             provider_uuid=valoration_create.provider_uuid,
         )
         return valoration
+    
+    @staticmethod
+    def update_comment(valoration: Valoration, general_review: GeneralReview, stars: int):
+        valoration.comment.rating = stars
+        valoration.general_review = general_review
+        return valoration
 
     @staticmethod
     def to_domain_valoration_update(valoration_update: UpdateValorationRequest) -> Valoration:

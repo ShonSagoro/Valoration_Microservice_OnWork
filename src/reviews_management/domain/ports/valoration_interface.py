@@ -7,6 +7,14 @@ class ValorationInterface(ABC):
         pass
     
     @abstractmethod
+    def get_valorations_by_user_uuid(self, uuid: str) -> dict:
+        pass
+    
+    @abstractmethod
+    def get_valorations_by_provider_uuid(self, uuid: str) -> dict:
+        pass
+    
+    @abstractmethod
     def create_valoration(self, valoration: Valoration) -> dict:
         pass
     

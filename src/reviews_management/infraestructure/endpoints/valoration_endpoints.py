@@ -5,10 +5,9 @@ from reviews_management.application.dtos.request.create_valoration_request impor
 from reviews_management.application.dtos.request.update_valoration_request import UpdateValorationRequest
 from reviews_management.application.dtos.response.base_response import BaseResponse
 from reviews_management.infraestructure.dependencies.valorations_dependencies import (
-    get_create_controller, get_list_controller, get_update_controller,
+    get_create_controller, get_get_by_uuid_provider_controller, get_get_by_uuid_user_controller, get_get_time_serie_controller, get_list_controller, get_update_controller,
     get_delete_controller, get_get_by_uuid_controller
 )
-
 
 router = APIRouter()
 
@@ -31,6 +30,19 @@ async def list_valorations(controller = Depends(get_list_controller)):
 
 @router.get("/valorations/{uuid}", response_model=BaseResponse, dependencies=[Depends(verify_token)])
 async def get_valoration(uuid: str, controller = Depends(get_get_by_uuid_controller)):
+    return await controller.execute(uuid)
+
+@router.get("/valorations/provider/{uuid}", response_model=BaseResponse, dependencies=[Depends(verify_token)])
+async def get_valoration_provider(uuid: str, controller = Depends(get_get_by_uuid_provider_controller)):
+    return await controller.execute(uuid)
+
+
+@router.get("/valorations/serie/user/{uuid}/days/{days}", response_model=BaseResponse, dependencies=[Depends(verify_token)])
+async def get_valoration_user(uuid: str, days:str, controller = Depends(get_get_time_serie_controller)):
+    return await controller.execute(uuid, days)
+
+@router.get("/valorations/user/{uuid}", response_model=BaseResponse, dependencies=[Depends(verify_token)])
+async def get_valoration_user(uuid: str, controller = Depends(get_get_by_uuid_user_controller)):
     return await controller.execute(uuid)
 
 @router.put("/valorations/{uuid}", response_model=BaseResponse, dependencies=[Depends(verify_token)])

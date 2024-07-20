@@ -10,7 +10,8 @@ class Database:
     def __init__(self):
         user = os.getenv('MONGO_USER')
         password = os.getenv('MONGO_PASS')
-        host = os.getenv('MONGO_HOST')
+        host = os.getenv('MONGO_HOST_REAL')
+        db_name = os.getenv('MONGO_DB_NAME')
         self.mongo_uri = f"mongodb://{user}:{password}@{host}:27017"
         self.client = AsyncIOMotorClient(self.mongo_uri)
 

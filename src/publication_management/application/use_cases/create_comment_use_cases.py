@@ -2,6 +2,7 @@ import logging
 
 from publication_management.application.dtos.request.create_comment_request import CreateCommentRequest
 from publication_management.application.mappers.comment_mapper_dtos import CommentMapperDTO
+from publication_management.application.utils.analisys_comment import analysis_comment
 from publication_management.domain.ports.comment_interface import CommentInterface
 from reviews_management.application.dtos.response.base_response import BaseResponse
 
@@ -12,7 +13,7 @@ class CreateCommentUseCase:
         self.repository = repository
 
     async def execute(self, Comment: CreateCommentRequest) -> BaseResponse:
-        commentDomain = CommentMapperDTO.to_domain_create(Comment)
+        commentDomain = CommentMapperDTO.to_domain_create(Comment)        
         if commentDomain is None:
             return BaseResponse(
                 data=None,

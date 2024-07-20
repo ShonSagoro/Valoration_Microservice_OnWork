@@ -25,6 +25,24 @@ class ValorationMongoRepository(ValorationInterface):
         else:
             logging.error(f"Valoration with UUID {uuid} not found.")
             return None
+        
+    @staticmethod
+    async def get_valorations_by_user_uuid(uuid: str) -> List[ValorationDomain]:
+        valoration_entities = await ValorationEntity.find(ValorationEntity.user_uuid == uuid).to_list()
+        if valoration_entities:
+            return [ValorationMapperDAO.to_domain(entity) for entity in valoration_entities]
+        else:
+            logging.error(f"Valoration with UUID {uuid} not found.")
+            return None
+        
+    @staticmethod
+    async def get_valorations_by_provider_uuid(uuid: str) -> List[ValorationDomain]:
+        valoration_entities = await ValorationEntity.find(ValorationEntity.provider_uuid == uuid).to_list()
+        if valoration_entities:
+            return [ValorationMapperDAO.to_domain(entity) for entity in valoration_entities]
+        else:
+            logging.error(f"Valoration with UUID {uuid} not found.")
+            return None
 
     @staticmethod
     async def create_valoration(valoration: ValorationDomain) -> ValorationDomain:
