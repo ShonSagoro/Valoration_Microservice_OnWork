@@ -7,6 +7,7 @@ class PublicationMapperDAO:
         return PublicationEntity(
             uuid=str(publication.uuid),
             title=str(publication.title),
+            url_image=publication.url_image,
             description=publication.description,
             user_uuid=publication.user_uuid,
             content=publication.content,
@@ -26,6 +27,7 @@ class PublicationMapperDAO:
             title=publication_dao.title,
             description=publication_dao.description,
             user_uuid=publication_dao.user_uuid,
+            url_image=publication_dao.url_image
         )
         publication_domain.uuid = publication_dao.uuid
         publication_domain.content = publication_dao.content

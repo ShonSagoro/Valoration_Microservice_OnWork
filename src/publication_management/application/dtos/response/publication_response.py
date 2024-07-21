@@ -12,6 +12,7 @@ class PublicationResponse(BaseModel):
     user_uuid: str
     content: List[str]
     comments: List[CommentResponse]
+    url_image: str
     createdAt: datetime
     updatedAt: datetime
     
@@ -23,6 +24,7 @@ class PublicationResponse(BaseModel):
             "user_uuid": self.user_uuid,
             "content": self.content,
             "comments": [comment.to_dict() for comment in self.comments],
+            "url_image": self.url_image,
             "createdAt": self.createdAt.isoformat(),
             "updatedAt": self.updatedAt.isoformat()
         }

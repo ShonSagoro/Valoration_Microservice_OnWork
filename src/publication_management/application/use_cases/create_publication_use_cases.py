@@ -10,8 +10,10 @@ class CreatePublicationUseCase:
     def __init__(self, repository: PublicationInterface):
         self.repository = repository
 
-    async def execute(self, publication: CreatePublicationRequest) -> BaseResponse:
-        publicationDomain = PublicationMapperDTO.to_domain_create(publication)
+    async def execute(self, publication: CreatePublicationRequest, s3_url: str) -> BaseResponse:
+        if s3_url is None:
+            s3_url = ''
+        publicationDomain = PublicationMapperDTO.to_domain_create(publication, s3_url)
         if publicationDomain is None:
             return BaseResponse(
                 data=None,

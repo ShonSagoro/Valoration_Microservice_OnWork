@@ -11,6 +11,7 @@ class Publication:
 	title: str
 	description: str
 	user_uuid: str
+	url_image: str
 	content: List[str] = field(default_factory=list)
 	comments: List[CommentUser] = field(default_factory=list) 
 	createdAt: datetime = field(default_factory=lambda: datetime.now(timezone.utc))

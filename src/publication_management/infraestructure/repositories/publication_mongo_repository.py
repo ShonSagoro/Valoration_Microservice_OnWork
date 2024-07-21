@@ -56,3 +56,22 @@ class PublicationMongoRepository(PublicationInterface):
             return False
         await publication_entity.delete()
         return True
+    
+    @staticmethod
+    async def update_image_publication(uuid: str, url_image: str) -> PublicationDomain:
+        entity = await PublicationEntity.find_one(PublicationEntity.uuid == uuid)
+        if not entity:
+            logging.error(f"publication with UUID {uuid} not found.")
+            return None
+        entity.url_image = url_image
+        await entity.update({"$set": entity.dict(exclude_unset=True)})
+        return PublicationMapperDAO.to_domain(entity)
+
+    @staticmethod
+    async def get_by_uuid_user(uuid: str) -> List[PublicationDomain]:
+        publication_entities = await PublicationEntity.find(PublicationEntity.user_uuid == uuid).to_list()
+        if publication_entities:
+            return [PublicationMapperDAO.to_domain(entity) for entity in publication_entities]
+        else:
+            logging.error(f"publication with UUID {uuid} not found.")
+            return None

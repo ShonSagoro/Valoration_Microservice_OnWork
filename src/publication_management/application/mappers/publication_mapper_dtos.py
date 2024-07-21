@@ -6,11 +6,12 @@ from publication_management.domain.entities.publication import Publication as Pu
 
 class PublicationMapperDTO:
     @staticmethod
-    def to_domain_create(request: CreatePublicationRequest) -> PublicationDomain:
+    def to_domain_create(request: CreatePublicationRequest, s3_url: str) -> PublicationDomain:
         return PublicationDomain(
             title=request.title,
             description=request.description,
             user_uuid=request.user_uuid,
+            url_image=s3_url
         )
         
     @staticmethod
@@ -19,6 +20,7 @@ class PublicationMapperDTO:
             title=request.title,
             description=request.description,
             user_uuid="",
+            url_image=""
         )
         
 
@@ -32,5 +34,6 @@ class PublicationMapperDTO:
             content= entity.content,
             comments= entity.comments,
             createdAt= entity.createdAt,
-            updatedAt= entity.updatedAt
+            updatedAt= entity.updatedAt,
+            url_image= entity.url_image
         ).to_dict()

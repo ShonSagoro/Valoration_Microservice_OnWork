@@ -9,6 +9,7 @@ class PublicationEntity(Document):
     title: str
     description: str
     user_uuid: str
+    url_image: str
     content: List[str] = Field(default_factory=list)
     createdAt: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updatedAt: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))    
