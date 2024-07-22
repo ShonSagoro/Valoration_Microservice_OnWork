@@ -20,5 +20,5 @@ class GetByUuidValorationUseCase:
             data=ValorationMapperDTO.to_response_valoration(result),
             message="Valoration has been found successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

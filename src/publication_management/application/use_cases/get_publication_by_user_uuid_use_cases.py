@@ -20,5 +20,5 @@ class GetPublicationByUserUuidUseCases:
             data=responses,
             message="publications has been found successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

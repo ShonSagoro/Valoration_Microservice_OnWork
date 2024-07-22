@@ -20,5 +20,5 @@ class GetByUuidCommentUseCase:
             data=CommentMapperDTO.to_response_comment(result),
             message="comment has been found successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

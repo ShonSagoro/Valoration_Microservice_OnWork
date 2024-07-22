@@ -19,5 +19,5 @@ class GetByUuidPublicationUseCase:
             data=PublicationMapperDTO.to_response(result),
             message="publication has been found successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

@@ -16,5 +16,5 @@ class ListValorationUseCase:
             data=responses,
             message="Valorations listed successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

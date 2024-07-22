@@ -16,5 +16,5 @@ class ListPublicationUseCase:
             data=responses,
             message="publications listed successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

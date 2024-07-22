@@ -21,5 +21,5 @@ class GetByProviderUuidValorationUseCase:
             data=responses,
             message="Valorations by provider uuid has been found successfully",
             status=True,
-            status_code=302
+            status_code=200
         )

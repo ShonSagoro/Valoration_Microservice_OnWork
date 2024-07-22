@@ -16,5 +16,5 @@ class ListCommentUseCase:
             data=responses,
             message="comments listed successfully",
             status=True,
-            status_code=302
+            status_code=200
         )
