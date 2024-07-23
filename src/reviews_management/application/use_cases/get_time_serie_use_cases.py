@@ -16,7 +16,7 @@ class GetTimeSerieUseCases:
                 status=False,
                 status_code=404
             )
-        result = GetTimeSerieProfile(result, days)
+        result = await GetTimeSerieProfile(uuid, result, days)
         return BaseResponse(
             data=result,
             message="Valorations by provider uuid has been found successfully",
